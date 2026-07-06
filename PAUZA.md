@@ -28,7 +28,16 @@ zobaczyć, ile pieniędzy udało się ocalić, i zamienić odpuszczone pokusy w 
 
 ## Uruchomienie
 
-Wymagana jest **Java 17 lub nowsza** (`java -version`).
+Wymagana jest **Java 17 lub nowsza** (`java -version`), do pobrania np. z [adoptium.net](https://adoptium.net).
+
+**Najszybciej — gotowy plik [`Pauza.jar`](Pauza.jar):** pobierz i kliknij dwukrotnie
+(Windows z zainstalowaną Javą) albo uruchom w terminalu:
+
+```bash
+java -jar Pauza.jar
+```
+
+Możesz też skompilować aplikację samodzielnie ze źródeł:
 
 **Linux / macOS:**
 
