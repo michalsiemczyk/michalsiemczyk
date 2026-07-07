@@ -26,6 +26,7 @@ import javafx.scene.control.Slider;
 import javafx.scene.control.ToggleButton;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Priority;
 import javafx.scene.layout.Region;
@@ -78,7 +79,7 @@ public final class RaceView implements ModuleView {
     private final ToggleButton pathToggle = new ToggleButton("Pathfinding");
     private final ComboBox<Object> comboA = new ComboBox<>();
     private final ComboBox<Object> comboB = new ComboBox<>();
-    private final Button startButton = new Button("🏁  Start wyscigu");
+    private final Button startButton = new Button("Start wyscigu");
     private final Button resetButton = new Button("Reset");
     private final Button newDataButton = new Button("Nowe dane");
     private final Slider speedSlider = new Slider(1, 100, 45);
@@ -135,17 +136,24 @@ public final class RaceView implements ModuleView {
 
         Label speedCaption = new Label("Predkosc");
         speedCaption.getStyleClass().add("caption");
-        speedSlider.setPrefWidth(140);
+        speedSlider.setPrefWidth(120);
+        comboA.setPrefWidth(170);
+        comboB.setPrefWidth(170);
+        HBox speedBox = new HBox(8, speedCaption, speedSlider);
+        speedBox.setAlignment(Pos.CENTER_LEFT);
+        // zadna kontrolka paska nie moze byc przycieta wielokropkiem
+        for (Region r : List.of(sortToggle, pathToggle, comboA, comboB,
+                startButton, resetButton, newDataButton, vs, speedCaption)) {
+            r.setMinWidth(Region.USE_PREF_SIZE);
+        }
 
-        HBox configBar = new HBox(10,
+        // FlowPane zawija kontrolki do kolejnego wiersza przy wezszym oknie
+        FlowPane configBar = new FlowPane(10, 10,
                 sortToggle, pathToggle,
-                spacer(12),
                 comboA, vs, comboB,
-                spacer(12),
                 startButton, resetButton, newDataButton,
-                growingSpacer(),
-                speedCaption, speedSlider);
-        configBar.setAlignment(Pos.CENTER_LEFT);
+                speedBox);
+        configBar.setRowValignment(javafx.geometry.VPos.CENTER);
         configBar.getStyleClass().addAll("card", "race-config");
         configBar.setPadding(new Insets(12, 16, 12, 16));
 
@@ -164,18 +172,6 @@ public final class RaceView implements ModuleView {
         root.setTop(top);
         root.setCenter(arena);
         root.setPadding(new Insets(24));
-    }
-
-    private Region spacer(double width) {
-        Region r = new Region();
-        r.setPrefWidth(width);
-        return r;
-    }
-
-    private Region growingSpacer() {
-        Region r = new Region();
-        HBox.setHgrow(r, Priority.ALWAYS);
-        return r;
     }
 
     // ---------------------------------------------------------------- events
@@ -237,6 +233,10 @@ public final class RaceView implements ModuleView {
 
     /** Buduje oba tory od zera na aktualnych danych - takze pelni role resetu. */
     private void rebuildLanes() {
+        // podczas populateCombos() drugi combo moze nie miec jeszcze wartosci
+        if (comboA.getValue() == null || comboB.getValue() == null) {
+            return;
+        }
         pauseLanes();
         racing = false;
         winner = null;
@@ -281,7 +281,7 @@ public final class RaceView implements ModuleView {
         if (winner == null) {
             winner = lane;
             Lane loser = (lane == laneA) ? laneB : laneA;
-            showBanner(String.format("🏆  %s wygrywa!  %,d %s vs %,d %s  ·  %.2f ms vs %.2f ms",
+            showBanner(String.format("%s wygrywa!  %,d %s vs %,d %s  ·  %.2f ms vs %.2f ms",
                     winner.algorithmName(),
                     winner.operations(), winner.operationsUnit(),
                     loser.operations(), loser.operationsUnit(),

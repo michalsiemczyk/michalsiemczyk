@@ -47,8 +47,8 @@ public final class PathView implements ModuleView {
     private final Button playButton = new Button("▶  Start");
     private final Button stepButton = new Button("Krok");
     private final Button resetButton = new Button("Reset");
-    private final Button clearButton = new Button("Wyczysc siatke");
-    private final Button randomButton = new Button("Losowe sciany");
+    private final Button clearButton = new Button("Wyczysc");
+    private final Button randomButton = new Button("Losowe");
     private final Slider speedSlider = new Slider(1, 100, 45);
     private final ToggleGroup editGroup = new ToggleGroup();
     private final Label visitedValue = new Label("0");
