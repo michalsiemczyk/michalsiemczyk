@@ -1,0 +1,321 @@
+/* ============================================================
+   AlgoVision Studio — ciemny motyw glassmorphism
+   Paleta: tlo #0F111A, panele #1A1D2E, cyjan #22D3EE,
+           fiolet #A78BFA, sukces #4ADE80, ostrzezenie #FBBF24
+   ============================================================ */
+
+.root {
+    -fx-font-family: "Segoe UI", "SF Pro Display", "Inter", "Ubuntu", sans-serif;
+    -fx-font-size: 13px;
+    -av-cyan: #22D3EE;
+    -av-violet: #A78BFA;
+    -av-green: #4ADE80;
+    -av-amber: #FBBF24;
+    -av-text: #E2E8F0;
+    -av-text-dim: #8B93B0;
+    -av-panel: #1A1D2E;
+}
+
+.app-root {
+    /* graficzne tlo z delikatnymi neonowymi poswiatami w rogach */
+    -fx-background-color:
+        radial-gradient(center 15% 0%, radius 60%, rgba(34, 211, 238, 0.08), transparent),
+        radial-gradient(center 100% 100%, radius 70%, rgba(167, 139, 250, 0.09), transparent),
+        #0F111A;
+}
+
+.label {
+    -fx-text-fill: -av-text;
+}
+
+/* ---------------------------------------------------------- sidebar */
+
+.sidebar {
+    -fx-background-color: rgba(26, 29, 46, 0.72);
+    -fx-border-color: rgba(255, 255, 255, 0.06);
+    -fx-border-width: 0 1 0 0;
+}
+
+.logo-algo {
+    -fx-font-size: 22px;
+    -fx-font-weight: bold;
+    -fx-text-fill: -av-cyan;
+}
+
+.logo-vision {
+    -fx-font-size: 22px;
+    -fx-font-weight: bold;
+    -fx-text-fill: -av-violet;
+}
+
+.logo-sub {
+    -fx-font-size: 10px;
+    -fx-text-fill: -av-text-dim;
+    -fx-font-weight: bold;
+}
+
+.nav-button {
+    -fx-background-color: transparent;
+    -fx-text-fill: -av-text-dim;
+    -fx-font-size: 14px;
+    -fx-padding: 11 14 11 14;
+    -fx-background-radius: 12;
+    -fx-cursor: hand;
+}
+
+.nav-button .nav-icon {
+    -fx-fill: -av-text-dim;
+    -fx-scale-x: 0.8;
+    -fx-scale-y: 0.8;
+}
+
+.nav-button:hover {
+    -fx-background-color: rgba(34, 211, 238, 0.08);
+    -fx-text-fill: -av-text;
+}
+
+.nav-button:selected {
+    -fx-background-color: linear-gradient(to right, rgba(34, 211, 238, 0.18), rgba(167, 139, 250, 0.12));
+    -fx-text-fill: white;
+    -fx-effect: dropshadow(gaussian, rgba(34, 211, 238, 0.25), 12, 0, 0, 0);
+}
+
+.nav-button:selected .nav-icon {
+    -fx-fill: -av-cyan;
+}
+
+.sidebar-footer {
+    -fx-text-fill: rgba(139, 147, 176, 0.55);
+    -fx-font-size: 11px;
+    -fx-padding: 0 0 0 8;
+}
+
+/* ---------------------------------------------------------- karty (glass) */
+
+.card {
+    -fx-background-color: rgba(26, 29, 46, 0.78);
+    -fx-background-radius: 16;
+    -fx-border-radius: 16;
+    -fx-border-color: rgba(255, 255, 255, 0.07);
+    -fx-border-width: 1;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.45), 24, 0, 0, 8);
+}
+
+/* ---------------------------------------------------------- naglowki widokow */
+
+.view-title {
+    -fx-font-size: 24px;
+    -fx-font-weight: bold;
+    -fx-text-fill: white;
+}
+
+.view-subtitle {
+    -fx-font-size: 13px;
+    -fx-text-fill: -av-text-dim;
+}
+
+.caption {
+    -fx-font-size: 11px;
+    -fx-font-weight: bold;
+    -fx-text-fill: -av-text-dim;
+}
+
+.panel-separator {
+    -fx-min-height: 1;
+    -fx-pref-height: 1;
+    -fx-background-color: rgba(255, 255, 255, 0.07);
+}
+
+/* ---------------------------------------------------------- przyciski */
+
+.button, .toggle-button {
+    -fx-cursor: hand;
+}
+
+.btn-primary {
+    -fx-background-color: linear-gradient(to right, #22D3EE, #A78BFA);
+    -fx-text-fill: #0F111A;
+    -fx-font-weight: bold;
+    -fx-font-size: 14px;
+    -fx-padding: 10 18 10 18;
+    -fx-background-radius: 12;
+    -fx-effect: dropshadow(gaussian, rgba(34, 211, 238, 0.35), 14, 0, 0, 2);
+}
+
+.btn-primary:hover {
+    -fx-background-color: linear-gradient(to right, #4ADEF5, #BBA5FC);
+}
+
+.btn-primary:pressed {
+    -fx-scale-x: 0.97;
+    -fx-scale-y: 0.97;
+}
+
+.btn-ghost {
+    -fx-background-color: rgba(255, 255, 255, 0.05);
+    -fx-text-fill: -av-text;
+    -fx-padding: 9 14 9 14;
+    -fx-background-radius: 10;
+    -fx-border-radius: 10;
+    -fx-border-color: rgba(255, 255, 255, 0.10);
+    -fx-border-width: 1;
+}
+
+.btn-ghost:hover {
+    -fx-background-color: rgba(34, 211, 238, 0.10);
+    -fx-border-color: rgba(34, 211, 238, 0.35);
+}
+
+.mode-toggle {
+    -fx-background-color: rgba(255, 255, 255, 0.05);
+    -fx-text-fill: -av-text-dim;
+    -fx-padding: 8 12 8 12;
+    -fx-background-radius: 10;
+    -fx-border-radius: 10;
+    -fx-border-color: rgba(255, 255, 255, 0.10);
+    -fx-border-width: 1;
+}
+
+.mode-toggle:hover {
+    -fx-text-fill: -av-text;
+}
+
+.mode-toggle:selected {
+    -fx-background-color: rgba(167, 139, 250, 0.22);
+    -fx-border-color: -av-violet;
+    -fx-text-fill: white;
+}
+
+/* ---------------------------------------------------------- suwaki */
+
+.slider .track {
+    -fx-background-color: rgba(255, 255, 255, 0.10);
+    -fx-background-radius: 4;
+    -fx-pref-height: 6;
+}
+
+.slider .thumb {
+    -fx-background-color: -av-cyan;
+    -fx-background-radius: 999;
+    -fx-pref-width: 16;
+    -fx-pref-height: 16;
+    -fx-effect: dropshadow(gaussian, rgba(34, 211, 238, 0.6), 8, 0, 0, 0);
+}
+
+.slider .thumb:hover {
+    -fx-background-color: #4ADEF5;
+}
+
+/* ---------------------------------------------------------- combo box */
+
+.combo-box {
+    -fx-background-color: rgba(255, 255, 255, 0.05);
+    -fx-background-radius: 10;
+    -fx-border-radius: 10;
+    -fx-border-color: rgba(255, 255, 255, 0.12);
+    -fx-border-width: 1;
+}
+
+.combo-box:hover {
+    -fx-border-color: rgba(34, 211, 238, 0.4);
+}
+
+.combo-box .list-cell {
+    -fx-text-fill: -av-text;
+    -fx-background-color: transparent;
+    -fx-padding: 6 10 6 10;
+}
+
+.combo-box .arrow {
+    -fx-background-color: -av-cyan;
+}
+
+.combo-box-popup .list-view {
+    -fx-background-color: #1E2235;
+    -fx-background-radius: 10;
+    -fx-border-radius: 10;
+    -fx-border-color: rgba(255, 255, 255, 0.12);
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.5), 18, 0, 0, 6);
+}
+
+.combo-box-popup .list-view .list-cell {
+    -fx-background-color: transparent;
+    -fx-text-fill: -av-text;
+    -fx-padding: 8 12 8 12;
+}
+
+.combo-box-popup .list-view .list-cell:hover,
+.combo-box-popup .list-view .list-cell:selected {
+    -fx-background-color: rgba(34, 211, 238, 0.15);
+    -fx-text-fill: white;
+}
+
+/* ---------------------------------------------------------- statystyki */
+
+.stat-label {
+    -fx-text-fill: -av-text-dim;
+    -fx-font-size: 12px;
+}
+
+.stat-value {
+    -fx-text-fill: -av-cyan;
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+}
+
+.stat-value-small {
+    -fx-text-fill: -av-cyan;
+    -fx-font-size: 12px;
+    -fx-font-weight: bold;
+}
+
+.status-label {
+    -fx-text-fill: -av-green;
+    -fx-font-size: 12px;
+    -fx-font-weight: bold;
+}
+
+/* ---------------------------------------------------------- race mode */
+
+.race-config {
+    -fx-background-radius: 14;
+    -fx-border-radius: 14;
+}
+
+.vs-label {
+    -fx-text-fill: -av-violet;
+    -fx-font-weight: bold;
+    -fx-font-size: 14px;
+}
+
+.lane-card {
+    -fx-background-color: rgba(26, 29, 46, 0.70);
+}
+
+.lane-title {
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+    -fx-text-fill: white;
+}
+
+.lane-stats {
+    -fx-text-fill: -av-text-dim;
+    -fx-font-size: 12px;
+}
+
+.race-banner {
+    -fx-background-color: linear-gradient(to right, rgba(34, 211, 238, 0.92), rgba(167, 139, 250, 0.92));
+    -fx-text-fill: #0F111A;
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+    -fx-padding: 14 26 14 26;
+    -fx-background-radius: 999;
+    -fx-effect: dropshadow(gaussian, rgba(34, 211, 238, 0.55), 26, 0, 0, 4);
+}
+
+/* ---------------------------------------------------------- scrollbary (drobiazg) */
+
+.scroll-bar .thumb {
+    -fx-background-color: rgba(255, 255, 255, 0.15);
+    -fx-background-radius: 999;
+}
